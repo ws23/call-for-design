@@ -61,6 +61,14 @@ function checkExist($DBlink, $user, $token){
 	return true; 
 }
 
+/* Check user is Admin or not */
+function checkAdmin($DBlink, $user){
+	$result = $DBlink->query("SELECT * FROM `admin` WHERE `user` = '{$user}'; "); 
+	if($result->num_rows<=0)
+		return false; 
+	return true; 
+}
+
 /* Generate token */
 function genToken($DBlink, $user){
 	list($usec, $sec) = explode(' ', microtime()); 

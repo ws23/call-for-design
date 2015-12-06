@@ -12,11 +12,17 @@ handlers:
 
 # Serve php scripts
 - url: /root.php
-  script: root.php
+  script: root.php 
   login: admin
 
-- url: /(.(admin|login|regist|view|delete|vote|add).php)$
-  script: (admin|login|regist|view|delete|vote|add).php
+- url: /install.php
+  script: install.php
+
+- url: /(.+\.php)$
+  script: \1
+
+- url: /stylesheets
+  static_dir: stylesheets
 
 - url: /(.+\.css)$
   script: \1
@@ -24,11 +30,11 @@ handlers:
 - url: /lib/validator.min.js
   script: lib/validator.min.js
 
-- url: /(lib/bootstrap/.+\)$
-  script: "lib/boostrap/"\1
+- url: /lib/bootstrap/
+  static_dir: lib/bootstrap 
 
-- url: /(lib/jquery/.\)$
-  script: "lib/jquery/"\1
+- url: /lib/jquery
+  static_dir: lib/jquery
 
 - url: /.*
   script: index.php

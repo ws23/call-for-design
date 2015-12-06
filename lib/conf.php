@@ -1,16 +1,16 @@
 <?php	/* Setting */
 
 	// Database Setting (MySQL)
-	$DBHost = "";
-	$DBUser = "";
-	$DBPassword = "";
-	$DBName = "";
-	$DBCloud = ""; 
+	$DBHost = "173.194.237.182";
+	$DBUser = "ws23";
+	$DBPassword = "104cloud";
+	$DBName = "call_for_design";
+	$DBCloud = "/cloudsql/call-for-design:db"; 
 
 	// folder
 	$HOST = $_SERVER['HTTP_HOST']; 
 	$URI = $_SERVER['REQUEST_URI']; 
-	$folderTooy = "/"; 
-	$URLpv = "//{$HOST}{$folderRoot}"; 
+	$folderRoot = "/"; 
+	$URLPv = "//{$HOST}{$folderRoot}"; 
 
 ?>
