@@ -1,5 +1,6 @@
 <?php
-	require_once(dirname(__FILE__ . "/lib/header.php")); 
+	session_start(); 
+	require_once(dirname(__FILE__) . "/lib/header.php"); 
 		if(isset($_SESSION['loginID']))
 			locate($URLPv . "index.php"); 
 		else if(isset($_POST['stuID']) && isset($_POST['stuPW'])) {
@@ -22,7 +23,7 @@
 		}
 		else {  ?>
 	<div class="login">
-		<form action="index.php" method="post">
+		<form action="login.php" method="post">
 			<div class="form-horizontal">
 				<div class="form-group">
 					<label class="control-label col-sm-2">Email: </label>
@@ -43,7 +44,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<input type="submit" value="Login" class="form-control btn btn-success" disabled>
+					<input type="submit" value="Login" class="form-control btn btn-success" disable>
 				</div>
 			</div>
 		</form>

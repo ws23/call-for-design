@@ -16,14 +16,6 @@ body {
 	}
 }
 
-@media screen and (min-width: 700px) {
-	.diary {
-		position: relative; 
-		left: 50%; 
-		margin-left: -350px; 
-	}
-}
-
 .login {
 	max-width: 400px; 
 }

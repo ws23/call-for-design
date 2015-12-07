@@ -68,6 +68,15 @@ function checkAdmin($DBlink, $user){
 		return false; 
 	return true; 
 }
+/* FixZero */
+function fixZero($val, $amount){
+	$zero = $amount - strlen(strval($val)); 
+	$str = ""; 
+	for($i=0; $i<$zero; $i++)
+		$str .= "0"; 
+	$str .=  strval($val); 
+	return $str; 
+}
 
 /* Generate token */
 function genToken($DBlink, $user){

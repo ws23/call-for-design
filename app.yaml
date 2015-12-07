@@ -24,9 +24,6 @@ handlers:
 - url: /stylesheets
   static_dir: stylesheets
 
-- url: /(.+\.css)$
-  script: \1
-
 - url: /lib/validator.min.js
   script: lib/validator.min.js
 
@@ -35,6 +32,3 @@ handlers:
 
 - url: /lib/jquery
   static_dir: lib/jquery
-
-- url: /.*
-  script: index.php

@@ -8,7 +8,7 @@
 
 	<title>衣物設計徵稿系統</title>
 	<link rel="stylesheet" href="<?php echo $URLPv; ?>lib/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" href="<?php echo $URLPv; ?>index.css">
+	<link rel="stylesheet" href="<?php echo $URLPv; ?>stylesheets/index.css">
 	<script src="<?php echo $URLPv; ?>lib/jquery/jquery-1.11.2.js"></script>
 	<script src="<?php echo $URLPv; ?>lib/bootstrap/js/bootstrap.js"></script>
 	<script src="<?php echo $URLPv; ?>lib/validator.min.js"></script>
@@ -28,8 +28,10 @@
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
 							<?php if(isset($_SESSION['loginID'])){ 	?>
-							<li><a href="<?php echo $URLPv; ?>logout.php">Logout</a></li>
-							<?php } ?>
+							<li><a href="<?php echo $URLPv; ?>logout.php">登出</a></li>
+							<?php } else { ?>
+							<li><a href="<?php echo $URLPv; ?>login.php">登入</a></li>
+							<? } ?>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>

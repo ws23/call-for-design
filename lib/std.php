@@ -1,5 +1,4 @@
 <?php
-	session_start(); 
 	ini_set('display_errors', 'On'); 
 	require_once(dirname(__FILE__) . "/conf.php"); 
 	require_once(dirname(__FILE__) . "/lib.php");
