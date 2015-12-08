@@ -6,12 +6,12 @@
 <div class="container">
 	<table class="table">
 		<tr>
-			<th>徵稿活動名稱</th>
-			<th>狀態</th>
-			<th></th>
+			<th class="col-ms-6">徵稿活動名稱</th>
+			<th class="col-ms-3">狀態</th>
+			<th class="col-ms-3"></th>
 		</tr>
 <?php
-	$now = date("Y-m-d H:i:s", time()); 
+	$now = time(); 
 
 	$result = $DBmain->query("SELECT * FROM `main` WHERE status = 1; "); 
 	$states = array("即將徵稿", "徵稿中", "即將投票", "投票中", "即將公佈", "公佈結果"); 
@@ -19,18 +19,18 @@
 	$events = array("",         "投稿去", "檢視稿件", "投票去", "檢視稿件", "看結果去"); 
 	if($result->num_rows>0){
 		while($row = $result->fetch_array(MYSQLI_BOTH)){
-		if($now < strtotime($row['startCallForDesign']))
-			$state = 0; 
-		else if($now < strtotime($row['endCallForDesign']))
-			$state = 1; 
-		else if($now < strtotime($row['startVote']))
-			$state = 2; 
-		else if($now < strtotime($row['endVote']))
-			$state = 3; 
-		else if($now < strtotime($row['announce']))
-			$state = 4; 
-		else
-			$state = 5; 
+			if($now < strtotime($row['startCallForDesign']))
+				$state = 0; 
+			else if($now < strtotime($row['endCallForDesign']))
+				$state = 1; 
+			else if($now < strtotime($row['startVote']))
+				$state = 2; 
+			else if($now < strtotime($row['endVote']))
+				$state = 3; 
+			else if($now < strtotime($row['announceTime']))
+				$state = 4; 
+			else
+				$state = 5; 
 ?>
 		<tr class="<?php echo $colors[$state]; ?>">
 			<td><?php echo $row['title']; ?></td>
