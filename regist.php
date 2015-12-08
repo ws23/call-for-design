@@ -2,7 +2,7 @@
 	session_start(); 
 	require(dirname(__FILE__) . "/lib/header.php");
 
-	needLogin(); 
+	needLogin($DBmain); 
 
 	if(isset($_POST['name'])){
 		if($_POST['name'] != ""){
