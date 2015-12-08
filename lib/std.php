@@ -24,12 +24,12 @@
 		}
 	}
 
-	function needLogin(){
+	function needLogin($DBlink){
 		if(!isset($_SESSION['loginID']) || !isset($_SESSION['loginToken'])){
 			locate($URLPv . "login.php"); 
 			return; 
 		}
-		if(!checkExist($DBmain, $_SESSION['loginID'], $_SESSION['loginToken'])){
+		if(!checkExist($DBlink, $_SESSION['loginID'], $_SESSION['loginToken'])){
 			locate($URLPv . "login.php"); 
 			return; 
 		}
