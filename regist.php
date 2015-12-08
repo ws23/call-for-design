@@ -11,9 +11,9 @@
 		}
 	}
 	else{
-		$result = $DBmain->query("SELECT `user`, `login`.`name`, `department`.`name` 
+		$result = $DBmain->query("SELECT `user`, `name`, `deptName` 
 									FROM `login`, `department`
-										WHERE `user` = '{$_SESSION['loginID']}' AND `department`.`deptID` = `user`.`deptID`; "); 
+										WHERE `user` = '{$_SESSION['loginID']}' AND `department`.`deptID` = `login`.`deptID`; "); 
 		$exist = $result->num_rows; 
 		if($exist>0)
 			$info = $result->fetch_array(MYSQLI_BOTH);
@@ -36,18 +36,25 @@
 				<td>系所</td>
 				<td>
 					<select class="form-control" name="dept">
+						<option value="0">不選擇</option>
 						<?php 
-							$result = $DBmain->query("SELECT `deptID`, `name` FROM `department`; "); 
+							$result = $DBmain->query("SELECT `deptID`, `deptName` FROM `department`; "); 
 							while($depts = $result->fetch_array(MYSQLI_BOTH)){
 						?>
 						<option value="<?php echo $depts['deptID']; ?>" <?php echo $exist>0? "selected":""?>>
-							<?php echo $depts['name']; ?>
+							<?php echo $depts['deptName']; ?>
 						</option>
 						<?php
 							}
 						?>
 					</select>
 				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" class="form-control btn-success" value="修改個人資料">
+				</td>
+			</tr>
 		</table>
 	</form>
 </div>
