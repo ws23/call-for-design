@@ -69,7 +69,7 @@ function checkAdmin($DBlink, $user){
 }
 
 function checkReg($DBlink, $user){
-	$result = $DBlink->query("SELECT * FROM `login` WHERE `user` = '{$user}' AND `name` != null AND `deptID` != null; "); 
+	$result = $DBlink->query("SELECT * FROM `login` WHERE `user` = '{$user}' AND `name` != '' AND `deptID` != ''; "); 
 	if($result->num_rows<=0)
 		return false; 
 	return true; 
