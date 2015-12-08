@@ -1,4 +1,4 @@
-application: testapp 
+application: call-for-design 
 version: 1
 runtime: php55
 api_version: 1

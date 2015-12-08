@@ -7,17 +7,20 @@
 			if(CheckPOP3($_POST['mailserver'] . ".ndhu.edu.tw", $_POST['stuID'], $_POST['stuPW'])){
 				
 				$_SESSION['loginID'] = $_POST['stuID']; 
-				setLogin($DBmain, $_SESSION['loginID']);
 				$_SESSION['loginToken'] = genToken($DBmain, $_SESSION['loginID']); 
 				if(checkAdmin($DBmain, $_SESSION['loginID'])){
 					setLog($DBmain, "info", "Admin Login", $_SESSION['loginID']);
 					$_SESSION['admin'] = $_SESSION['loginID']; 
 				}
 
-				if(checkExist($DBmain, $_SESSION['loginID'], $_SESSION['loginToken']))
+				if(checkExist($DBmain, $_SESSION['loginID'], $_SESSION['loginToken'])){
+					setLogin($DBmain, $_SESSION['loginID']); 
 					locate($URLPv . "index.php"); 
-				else
+				}
+				else{
+					setLogin($DBmain, $_SESSION['loginID']); 
 					locate($URLPv . "regist.php"); 
+				}
 			}
 			else{ 
 				alert("Login Failed! Please try again. "); 
@@ -48,6 +51,9 @@
 				</div>
 				<div class="form-group">
 					<input type="submit" value="Login" class="form-control btn btn-success" disable>
+				</div>
+				<div class="form-group has-error">
+					<label class="control-label">敬請使用東華大學信箱登入</label>
 				</div>
 			</div>
 		</form>
