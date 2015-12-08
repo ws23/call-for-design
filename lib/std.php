@@ -17,5 +17,11 @@
 	$DBmain->query('SET character_set_connection = "utf8"; '); 
 	$DBmain->query('SET character_set_database = "utf8"; '); 
 	$DBmain->query('SET character_set_server = "utf8"; '); 
-	
+
+	if(isset($_SESSION['loginID']) && isset($_SESSION['loginToken'])){
+		if(!checkExist($DBmain, $_SESSION['loginID'], $_SESSION['loginToken'])){
+			locate($URLPv . "logout.php"); 
+		}
+	}
+
 ?> 

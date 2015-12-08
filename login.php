@@ -5,18 +5,21 @@
 			locate($URLPv . "index.php"); 
 		else if(isset($_POST['stuID']) && isset($_POST['stuPW'])) {
 			if(CheckPOP3($_POST['mailserver'] . ".ndhu.edu.tw", $_POST['stuID'], $_POST['stuPW'])){
+				
 				$_SESSION['loginID'] = $_POST['stuID']; 
-				setLog($DBmain, "info", "Login Sucess", $_SESSION['loginID']); 
 				setLogin($DBmain, $_SESSION['loginID']);
 				$_SESSION['loginToken'] = genToken($DBmain, $_SESSION['loginID']); 
 				if(checkAdmin($DBmain, $_SESSION['loginID'])){
 					setLog($DBmain, "info", "Admin Login", $_SESSION['loginID']);
 					$_SESSION['admin'] = $_SESSION['loginID']; 
 				}
-				locate($URLPv . "index.php"); 
+
+				if(checkExist($DBmain, $_SESSION['loginID'], $_SESSION['loginToken']))
+					locate($URLPv . "index.php"); 
+				else
+					locate($URLPv . "regist.php"); 
 			}
 			else{ 
-				setLog($DBmain, "warning", "Login Failed.", $_POST['stuID']); 
 				alert("Login Failed! Please try again. "); 
 				locate($URLPv . "index.php"); 
 			}

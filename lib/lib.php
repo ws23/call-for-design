@@ -49,7 +49,6 @@ function setLogin($DBlink, $user){
 	}
 	else{
 		$DBlink->query("INSERT INTO `login`(`user`, `IP`) VALUES('{$user}', '{$ip}'); "); 
-	
 	}
 }
 
@@ -68,6 +67,21 @@ function checkAdmin($DBlink, $user){
 		return false; 
 	return true; 
 }
+
+/* Add user */
+function updateUser($DBlink, $user, $name, $deptID, $token){
+	if(!checkExist($DBlink, $user, $token))
+		return false; 
+	else{
+		$DBlink->query("UPDATE `login` 
+							SET `name` = '{$name}', 
+								`deptID` = {$deptID}
+							WHERE `user` = '{$user}'; ");
+		
+		return true; 
+	}
+}
+
 /* FixZero */
 function fixZero($val, $amount){
 	$zero = $amount - strlen(strval($val)); 

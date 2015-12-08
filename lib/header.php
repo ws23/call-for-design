@@ -1,5 +1,5 @@
 <?php
-	require_once(dirname(__FILE__) . "/std.php"); 
+	require_once(dirname(__FILE__) . "/std.php");
 ?>
 <!Doctype html>
 <html>
@@ -27,11 +27,19 @@
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
-							<?php if(isset($_SESSION['loginID'])){ 	?>
+							<?php 
+								if(isset($_SESSION['loginID'])){ 	
+							?>
+							<li><a href="<?php echo $URLPv; ?>regist.php">修改個人資料</a></li>
 							<li><a href="<?php echo $URLPv; ?>logout.php">登出</a></li>
-							<?php } else { ?>
+							<?php 
+								} 
+								else { 
+							?>
 							<li><a href="<?php echo $URLPv; ?>login.php">登入</a></li>
-							<? } ?>
+							<?php
+								} 
+							?>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>

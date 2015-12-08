@@ -32,3 +32,6 @@ handlers:
 
 - url: /lib/jquery
   static_dir: lib/jquery
+
+- url: /
+  script: index.php
