@@ -96,30 +96,8 @@
 		) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='投票' AUTO_INCREMENT=1 ;
 	");
 
-
-	$DBmain->query("
-		ALTER TABLE `admin`
-			ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`user`) REFERENCES `login` (`user`);
-	"); 
-	$DBmain->query("
-		ALTER TABLE `draft`
-			ADD CONSTRAINT `draft_ibfk_2` FOREIGN KEY (`actID`) REFERENCES `main` (`mainID`),
-			ADD CONSTRAINT `draft_ibfk_1` FOREIGN KEY (`user`) REFERENCES `login` (`user`);
-	"); 
-	$DBmain->query("
-		ALTER TABLE `log`
-			ADD CONSTRAINT `log_ibfk_1` FOREIGN KEY (`user`) REFERENCES `login` (`user`);
-	"); 
-	$DBmain->query("
-	ALTER TABLE `login`
-		ADD CONSTRAINT `login_ibfk_1` FOREIGN KEY (`deptID`) REFERENCES `department` (`deptID`);
-	"); 
-	$DBmain->query("
-	ALTER TABLE `vote`
-		ADD CONSTRAINT `vote_ibfk_2` FOREIGN KEY (`actID`) REFERENCES `main` (`mainID`),
-		ADD CONSTRAINT `vote_ibfk_1` FOREIGN KEY (`user`) REFERENCES `login` (`user`);
-	"); 
-	
 	$DBmain->query("SET FOREIGN_KEY_CHECKS=1;"); 
+
+	locate($URLPV . "index.php"); 
 
 ?>
