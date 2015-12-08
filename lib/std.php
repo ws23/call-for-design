@@ -24,4 +24,11 @@
 		}
 	}
 
+	function needLogin(){
+		if(!isset($_SESSION['loginID']) || !isset($_SESSION['loginToken']))
+			locate($URLPv . "login.php"); 
+		if(!checkExist($DBmain, $_SESSION['loginID'], $_SESSION['loginToken']))
+			locate($URLPv . "login.php"); 
+	}
+
 ?> 

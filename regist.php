@@ -2,6 +2,8 @@
 	session_start(); 
 	require(dirname(__FILE__) . "/lib/header.php");
 
+	needLogin(); 
+
 	if(isset($_POST['name'])){
 		if($_POST['name'] != ""){
 			updateUser($DBmain, $_SESSION['loginID'], $_POST['name'], $_POST['dept'], $_SESSION['loginToken']);
@@ -13,7 +15,8 @@
 									FROM `user`, `department`
 										WHERE `user` = '{$_SESSION['loginID']}'; "); 
 		$exist = $result->num_rows; 
-		$info = $result->fetch_array(MYSQLI_BOTH);
+		if($exist>0)
+			$info = $result->fetch_array(MYSQLI_BOTH);
 ?>
 
 <div class="container">
