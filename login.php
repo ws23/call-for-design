@@ -24,7 +24,7 @@
 			}
 			else{ 
 				alert("Login Failed! Please try again. "); 
-				locate($URLPv . "index.php"); 
+				locate($URLPv . "login.php"); 
 			}
 		}
 		else {  ?>
