@@ -45,7 +45,7 @@ function setLogin($DBlink, $user){
 	$ip = getIP(); 
 	$result = $DBlink->query("SELECT * FROM `login` WHERE `user` = '{$user}'; "); 
 	if($result->num_rows>0){
-		$DBlink->query("UPDATE `login` SET `IP`= '{$ip}', `time` = CURRENT_TIMESTAMP WHERE `user` = '{$user}'; "); 
+		$DBlink->query("UPDATE `login` SET `IP`= '{$ip}', `lastLogin` = CURRENT_TIMESTAMP WHERE `user` = '{$user}'; "); 
 	}
 	else{
 		$DBlink->query("INSERT INTO `login`(`user`, `IP`) VALUES('{$user}', '{$ip}'); "); 
