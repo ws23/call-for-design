@@ -40,7 +40,7 @@
 	</table>
 
 	<h2>Main</h2>
-	<table>
+	<table class="table">
 <?php
 	$result = $DBmain->query("SELECT * FROM `main`; "); 
 	while($row = $result->fetch_array(MYSQLI_BOTH)){
@@ -53,7 +53,7 @@
 	</table>
 
 	<h2>Draft</h2>
-	<table>
+	<table class="table">
 <?php
 	$result = $DBmain->query("SELECT * FROM `draft`; "); 
 	while($row = $result->fetch_array(MYSQLI_BOTH)){
@@ -66,7 +66,7 @@
 	</table>
 
 	<h2>Vote</h2>
-	<table>
+	<table class="table">
 <?php
 	$result = $DBmain->query("SELECT * FROM `vote`; "); 
 	while($row = $result->fetch_array(MYSQLI_BOTH)){
@@ -79,7 +79,7 @@
 	</table>
 
 	<h2>Admin</h2>
-	<table>
+	<table class="table">
 <?php
 	$result = $DBmain->query("SELECT * FROM `admin`; "); 
 	while($row = $result->fetch_array(MYSQLI_BOTH)){
@@ -92,7 +92,7 @@
 	</table>
 
 	<h2>Department</h2>
-	<table>
+	<table class="table">
 <?php
 	$result = $DBmain->query("SELECT * FROM `department`; "); 
 	while($row = $result->fetch_array(MYSQLI_BOTH)){
@@ -105,7 +105,7 @@
 	</table>
 
 	<h2>Log</h2>
-	<table>
+	<table class="table">
 <?php
 	$result = $DBmain->query("SELECT * FROM `log`; "); 
 	while($row = $result->fetch_array(MYSQLI_BOTH)){
