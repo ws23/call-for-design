@@ -18,11 +18,24 @@
 	$DBmain->query('SET character_set_database = "utf8"; '); 
 	$DBmain->query('SET character_set_server = "utf8"; '); 
 
+	$throw = array("/regist.php", "/root.php"); 
+
+	// check if login & is login correct or not
 	if(isset($_SESSION['loginID']) && isset($_SESSION['loginToken'])){
 		if(!checkExist($DBmain, $_SESSION['loginID'], $_SESSION['loginToken'])){
 			locate($URLPv . "logout.php"); 
 		}
+		// check regist or not
+		$skip = false; 
+		if(!checkReg($DBmain, $_SESSION['loginID'])){
+			for($i=0; $i<count($throw); $i++)
+				if($throw[$i] == $URI)
+					$skip = true; 
+			if($skip == false)
+				locate($URLPv . "regist.php"); 
+		}
 	}
+
 
 	function needLogin($DBlink){
 		if(!isset($_SESSION['loginID']) || !isset($_SESSION['loginToken'])){

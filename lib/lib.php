@@ -68,6 +68,13 @@ function checkAdmin($DBlink, $user){
 	return true; 
 }
 
+function checkReg($DBlink, $user){
+	$result = $DBlink->query("SELECT * FROM `login` WHERE `user` = '{$user}' AND `name` != null AND `deptID` != null; "); 
+	if($result->num_rows<=0)
+		return false; 
+	return true; 
+}
+
 /* Add user */
 function updateUser($DBlink, $user, $name, $deptID, $token){
 	if(!checkExist($DBlink, $user, $token))
