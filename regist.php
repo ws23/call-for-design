@@ -12,8 +12,8 @@
 	}
 	else{
 		$result = $DBmain->query("SELECT `user`, `login`.`name`, `department`.`name` 
-									FROM `user`, `department`
-										WHERE `user` = '{$_SESSION['loginID']}'; "); 
+									FROM `login`, `department`
+										WHERE `user` = '{$_SESSION['loginID']}' AND `department`.`deptID` = `user`.`deptID`; "); 
 		$exist = $result->num_rows; 
 		if($exist>0)
 			$info = $result->fetch_array(MYSQLI_BOTH);
