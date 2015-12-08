@@ -1,5 +1,7 @@
 <?php
-	ini_set('display_errors', 'On'); 
+	ini_set('display_errors', 'On');
+	ini_set('date.timezone', 'Asia/Taipei'); 
+	
 	require_once(dirname(__FILE__) . "/conf.php"); 
 	require_once(dirname(__FILE__) . "/lib.php");
 	
