@@ -53,12 +53,6 @@
 	}
 
 	function needAdmin($DBlink){
-		needLogin($DBlink); 
-		if(!isset($_SESSION['admin'])){
-			alert('Permission deny. '); 
-			locate($URLPv . "index.php"); 
-			return; 
-		}
 		if(!checkAdmin($DBlink, $_SESSION['loginID'])){
 			alert('Permission deny'); 
 			locate($URLPv . "index.php"); 
