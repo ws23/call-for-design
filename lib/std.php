@@ -41,11 +41,27 @@
 
 	function needLogin($DBlink){
 		if(!isset($_SESSION['loginID']) || !isset($_SESSION['loginToken'])){
+			alert('Please login first. '); 
 			locate($URLPv . "login.php"); 
 			return; 
 		}
 		if(!checkExist($DBlink, $_SESSION['loginID'], $_SESSION['loginToken'])){
+			alert('Please login first. '); 
 			locate($URLPv . "login.php"); 
+			return; 
+		}
+	}
+
+	function needAdmin($DBlink){
+		needLogin($DBlink); 
+		if(!isset($_SESSION['admin'])){
+			alert('Permission deny. '); 
+			locate($URLPv . "index.php"); 
+			return; 
+		}
+		if(!checkAdmin($DBlink, $_SESSION['loginID'])){
+			alert('Permission deny'); 
+			locate($URLPv . "index.php"); 
 			return; 
 		}
 	}
