@@ -27,7 +27,14 @@
 		$state = getActState($DBmain, $_GET['act']); 
 		$max = $row['voteLimit']; 
 		$dept = $row['deptID']; 
-	
+
+		$rslt = $DBmain->query("SELECT * FROM `vote` WHERE `user` = '{$_SESSION['loginID']}' AND `actID` = {$_GET['act']}; "); 
+		$hasVote = false; 
+		if($rslt->num_rows>0){
+			alert('您已經投過票囉！'); 
+			$hasVote = true; 
+		}
+
 		$canVote = false; 
 		$isAdmin = false; 
 		if(isset($_SESSION['loginID'])){
@@ -39,11 +46,14 @@
 				$isAdmin = true; 
 		}
 
+		if($canVote && !$hasVote)
+			alert('每人最多 ' . $max . ' 票，請不要多投喔！'); 
+
 ?>
 	<form method="post" action="process.php?act=<?php echo $_GET['act']; ?>&module=3">
 		<table class="table table-bordered table-hover">
 			<tr class="text-center">
-<?php	if($canVote){	?>
+<?php	if($canVote && !$hasVote){	?>
 				<th class="col-md-1">投票</th>
 <?php	} ?>
 				<th class="col-md-1">#</th>
@@ -55,17 +65,23 @@
 				<th class="col-md-6">設計稿(可點圖放大)</th>
 			</tr>
 <?php
-		$result = $DBmain->query("SELECT * FROM `draft` 
-									LEFT JOIN `login` ON `login`.`user` = `draft`.`user`
-									WHERE `actID` = {$_GET['act']}; "); 
+		if($state != 5)
+			$result = $DBmain->query("SELECT * FROM `draft` 
+										LEFT JOIN `login` ON `login`.`user` = `draft`.`user`
+										WHERE `actID` = {$_GET['act']}; "); 
+		else
+			$result = $DBmain->query("SELECT * FROM `draft`
+										LEFT JOIN `login` ON `login`.`user` = `draft`.`user`
+										WHERE `actID` = {$_GET['act']} 
+										ORDER BY `vote` DESC; "); 
 		if($result->num_rows>0){
 			$count = 0; 
 			while($row = $result->fetch_array(MYSQLI_BOTH)){
 ?>
 			<tr>
-<?php			if($canVote){	?>
+<?php			if($canVote && !$hasVote){	?>
 				<td> 
-					<input type="checkbox" class="form-control <?php echo $count==0? '{required:true,rangelength: [1,' .  $max . ']}"':''; ?>" name="vote[]" value="<?php echo $row['draftID']; ?>" required rangelength=[1,<?php echo $max; ?>]>
+					<input type="checkbox" class="form-control" name="vote[]" value="<?php echo $row['draftID']; ?>">
 				</td> 
 <?php			}	?>
 				<td><?php echo $row['draftID']; ?></td> 
@@ -88,7 +104,7 @@
 <?php
 			}
 		}
-	if($canVote){
+	if($canVote && !$hasVote){
 ?>
 			<tr>
 				<td class="col-md-12" colspan="6">

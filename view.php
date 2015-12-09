@@ -34,6 +34,8 @@
 	<a href="apply.php?act=<?php echo $_GET['act']; ?>"><input type="button" class="btn btn-large btn-info" value="修改活動"></a>
 	&nbsp;
 	<input type="button" class="btn btn-large btn-danger" value="刪除活動" onclick="wantDelete(); ">
+	&nbsp;
+	<a href="vote.php?act=<?php echo $_GET['act']; ?>"><input type="button" class="btn btn-large btn-info" value="檢視投稿狀況"></a>
 	&nbsp; 
 <?
 			}

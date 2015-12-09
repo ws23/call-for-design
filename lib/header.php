@@ -6,7 +6,7 @@
 <head>
 	<meta charset="utf8">
 
-	<title>衣物設計徵稿系統</title>
+	<title>設計品徵稿系統</title>
 	<link rel="stylesheet" href="<?php echo $URLPv; ?>lib/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" href="<?php echo $URLPv; ?>lib/zoomify/zoomify.css">
 	<link rel="stylesheet" href="<?php echo $URLPv; ?>stylesheets/index.css">
@@ -27,7 +27,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.php">衣物設計徵稿系統</a>
+                        <a class="navbar-brand" href="index.php">設計品徵稿系統</a>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
