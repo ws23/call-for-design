@@ -12,7 +12,7 @@
 		</tr>
 <?php
 
-	$result = $DBmain->query("SELECT * FROM `main` WHERE `status` = 1 ORDER BY `startCallForDesign`; "); 
+	$result = $DBmain->query("SELECT * FROM `main` WHERE `status` = 1 ORDER BY `startCallForDesign` DESC; "); 
 	$states = array("即將徵稿", "徵稿中", "即將投票", "投票中", "即將公佈", "公佈結果"); 
 	$colors = array("",         "info",   "warning",  "danger", "active",   "success"); 
 	$events = array("",         "投稿去", "檢視稿件", "投票去", "檢視稿件", "看結果去"); 
