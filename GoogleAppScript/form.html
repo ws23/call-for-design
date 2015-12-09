@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="//call-for-design.appspot.com/lib/bootstrap/css/bootstrap.css">
+<div class="container">
+<h1> 檔案上傳系統 </h1>
+
+
+<form id="myForm">
+     
+    <div class="form-group">
+        <label class="label-control">上傳檔案</label>
+        <input class="form-control" type="file" name="myFile">
+    </div>
+    <input class="form-control btn-success" type="submit" value="上傳檔案" 
+           onclick="this.value='檔案上傳中...';
+                    google.script.run.withSuccessHandler(fileUploaded)
+                    .uploadFiles(this.parentNode);
+                    return false;">
+      
+    
+</form>
+
+<div id="output"></div>
+</div>
+<script>
+    function fileUploaded(status) {
+        document.getElementById('myForm').style.display = 'none';
+        document.getElementById('output').innerHTML = status;
+    }
+</script>
+
+<style>
+ input { display:block; margin: 20px; }
+ 
+ .container {
+     max-width: 800px; 
+ }
+</style>
+
