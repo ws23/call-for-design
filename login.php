@@ -8,7 +8,7 @@
 				
 				$_SESSION['loginID'] = $_POST['stuID']; 
 				$_SESSION['loginToken'] = genToken($DBmain, $_SESSION['loginID']);
-				setLogin($DBmain, $_SESSION['loginID']; 
+				setLogin($DBmain, $_SESSION['loginID']); 
 				if(checkAdmin($DBmain, $_SESSION['loginID']))
 					setLog($DBmain, "info", "Admin Login", $_SESSION['loginID']);
 
