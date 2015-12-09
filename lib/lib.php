@@ -149,7 +149,7 @@ function CheckPOP3($server, $user, $pwd, $port = 110){
 function getActState($DBlink, $id){
 	$now = time(); 
 
-	$result = $DBmain->query("SELECT * FROM `main` WHERE `mainID` = {$id}; ");
+	$result = $DBlink->query("SELECT * FROM `main` WHERE `mainID` = {$id}; ");
 	if($result->num_rows<1)
 		return -1; 
 	$row = $result->fetch_array(MYSQLI_BOTH); 
