@@ -27,96 +27,48 @@
 		<p><input type="submit" class="btn btn-large btn-info" value="submit"></p>
 	</form>
 
-	<h2>Login</h2>
-	<table class="table">
+<?php 
+	$tables = array( "login",  "main", "admin", "draft", "vote", "department", "log"); 
+	for($j=0; $j<count($tables); $j++){
+?>
+
+	<h2><?php echo $tables[$j]; ?></h2>
+	<table class="table table-bordered table-hover">
 <?php
-	$result = $DBmain->query("SELECT * FROM `login`; "); 
-	while($row = $result->fetch_array(MYSQLI_BOTH)){
-		echo "<tr>"; 
-		for($i=0; $i<count($row); $i++)
-			echo "<td>" . $row[$i] . "</td>"; 
-		echo "</tr>"; 
-	}
+		$result = $DBmain->query("SELECT `Column_name` FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{$tables[$j]}'; ");
+?>
+		<tr class="info">
+<?php
+		$count = 0; 
+		while($row = $result->fetch_array(MYSQLI_BOTH)){
+		$count++; 
+?>
+			<th><?php echo $row['Column_name']; ?></th> 
+<?php
+		}
+?>
+		</tr>
+<?php
+		$result = $DBmain->query("SELECT * FROM `{$tables[$j]}`; "); 
+		while($row = $result->fetch_array(MYSQLI_BOTH)){
+?>
+		<tr>
+<?php
+			for($i=0; $i<$count; $i++){
+?>
+			<td><?php echo $row[$i]; ?></td>
+<?php
+			}
+?>
+		</tr>
+<?php
+		}
 ?>
 	</table>
 
-	<h2>Main</h2>
-	<table class="table">
 <?php
-	$result = $DBmain->query("SELECT * FROM `main`; "); 
-	while($row = $result->fetch_array(MYSQLI_BOTH)){
-		echo "<tr>"; 
-		for($i=0; $i<count($row); $i++)
-			echo "<td>" . $row[$i] . "</td>"; 
-		echo "</tr>"; 
 	}
 ?>
-	</table>
-
-	<h2>Draft</h2>
-	<table class="table">
-<?php
-	$result = $DBmain->query("SELECT * FROM `draft`; "); 
-	while($row = $result->fetch_array(MYSQLI_BOTH)){
-		echo "<tr>"; 
-		for($i=0; $i<count($row); $i++)
-			echo "<td>" . $row[$i] . "</td>"; 
-		echo "</tr>"; 
-	}
-?>
-	</table>
-
-	<h2>Vote</h2>
-	<table class="table">
-<?php
-	$result = $DBmain->query("SELECT * FROM `vote`; "); 
-	while($row = $result->fetch_array(MYSQLI_BOTH)){
-		echo "<tr>"; 
-		for($i=0; $i<count($row); $i++)
-			echo "<td>" . $row[$i] . "</td>"; 
-		echo "</tr>"; 
-	}
-?>
-	</table>
-
-	<h2>Admin</h2>
-	<table class="table">
-<?php
-	$result = $DBmain->query("SELECT * FROM `admin`; "); 
-	while($row = $result->fetch_array(MYSQLI_BOTH)){
-		echo "<tr>"; 
-		for($i=0; $i<count($row); $i++)
-			echo "<td>" . $row[$i] . "</td>"; 
-		echo "</tr>"; 
-	}
-?>
-	</table>
-
-	<h2>Department</h2>
-	<table class="table">
-<?php
-	$result = $DBmain->query("SELECT * FROM `department`; "); 
-	while($row = $result->fetch_array(MYSQLI_BOTH)){
-		echo "<tr>"; 
-		for($i=0; $i<count($row); $i++)
-			echo "<td>" . $row[$i] . "</td>"; 
-		echo "</tr>"; 
-	}
-?>
-	</table>
-
-	<h2>Log</h2>
-	<table class="table">
-<?php
-	$result = $DBmain->query("SELECT * FROM `log`; "); 
-	while($row = $result->fetch_array(MYSQLI_BOTH)){
-		echo "<tr>"; 
-		for($i=0; $i<count($row); $i++)
-			echo "<td>" . $row[$i] . "</td>"; 
-		echo "</tr>"; 
-	}
-?>
-	</table>
 
 </div>
 <?php 
