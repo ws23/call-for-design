@@ -23,7 +23,7 @@
 				continue; 
 ?>
 		<tr class="<?php echo $colors[$state]; ?>">
-			<td><a href="view.php?act=<?php echo $row['mainID']; ?>"><?php echo $row['title']; ?></td>
+			<td><a href="view.php?act=<?php echo $row['mainID']; ?>"><b><?php echo $row['title']; ?></b></td>
 			<td><?php echo $states[$state]; ?></td>
 			<td><a href="<?php echo $state==1? "add.php?act=".$row['mainID'] : "vote.php?act=".$row['mainID']; ?>"><?php echo $events[$state]; ?></td>
 		</tr>
