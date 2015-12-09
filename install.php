@@ -31,6 +31,7 @@
 			`picItem` varchar(255) NOT NULL COMMENT '稿件附件ID(google drive)',
 			`idea` text NOT NULL COMMENT '投稿理念',
 			`time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '投稿時間',
+			`vote` int(11) NOT NULL DEFAULT 0 COMMENT '獲得票數', 
 			PRIMARY KEY (`draftID`),
 			KEY `user` (`user`,`actID`),
 			KEY `actID` (`actID`)
