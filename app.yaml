@@ -33,5 +33,8 @@ handlers:
 - url: /lib/jquery
   static_dir: lib/jquery
 
+- url: /lib/zoomify
+  static_dir: lib/zoomify
+
 - url: /
   script: index.php
