@@ -35,7 +35,7 @@
 								if(isset($_SESSION['loginID'])){ 	
 									if(checkAdmin($DBmain, $_SESSION['loginID'])){
 							?>
-							<li><a href="<?php echo $URLPv; ?>admin.php">管理使用者</a></li>	
+					<!--		<li><a href="<?php echo $URLPv; ?>admin.php">管理使用者</a></li>	-->
 							<?php
 									}
 							?>
