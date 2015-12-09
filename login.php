@@ -8,11 +8,11 @@
 				
 				$_SESSION['loginID'] = $_POST['stuID']; 
 				$_SESSION['loginToken'] = genToken($DBmain, $_SESSION['loginID']);
-				setLogin($DBmain, $_SESSION['loginID']); 
+				setLogin($DBmain, $_SESSION['loginID'], $_SESSION['loginToken']); 
 				if(checkAdmin($DBmain, $_SESSION['loginID']))
 					setLog($DBmain, "info", "Admin Login", $_SESSION['loginID']);
 
-				if(checkExist($DBmain, $_SESSION['loginID'], $_SESSION['loginToken']))
+				if(checkReg($DBmain, $_SESSION['loginID']))
 					locate($URLPv . "index.php"); 
 				else
 					locate($URLPv . "regist.php"); 

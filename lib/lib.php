@@ -41,14 +41,14 @@ function setLog($DBlink, $type="info", $content, $user=""){
 }
 
 /* set Login */
-function setLogin($DBlink, $user){
+function setLogin($DBlink, $user, $token){
 	$ip = getIP(); 
 	$result = $DBlink->query("SELECT * FROM `login` WHERE `user` = '{$user}'; "); 
 	if($result->num_rows>0){
-		$DBlink->query("UPDATE `login` SET `IP`= '{$ip}', `lastLogin` = CURRENT_TIMESTAMP WHERE `user` = '{$user}'; "); 
+		$DBlink->query("UPDATE `login` SET `IP`= '{$ip}', `lastLogin` = CURRENT_TIMESTAMP , `token` = '{$token}' WHERE `user` = '{$user}'; "); 
 	}
 	else{
-		$DBlink->query("INSERT INTO `login`(`user`, `IP`) VALUES('{$user}', '{$ip}'); "); 
+		$DBlink->query("INSERT INTO `login`(`user`, `IP`, `token`) VALUES('{$user}', '{$ip}', '{$token}'); "); 
 	}
 }
 
@@ -70,7 +70,7 @@ function checkAdmin($DBlink, $user){
 
 /* Check user has registed or not */
 function checkReg($DBlink, $user){
-	$result = $DBlink->query("SELECT * FROM `login` WHERE `user` = '{$user}' AND `name` != '' AND `deptID` != ''; "); 
+	$result = $DBlink->query("SELECT * FROM `login` WHERE `user` = '{$user}' AND `name` != ''; "); 
 	if($result->num_rows<=0)
 		return false; 
 	return true; 
