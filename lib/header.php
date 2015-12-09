@@ -14,6 +14,8 @@
 	<script src="<?php echo $URLPv; ?>lib/bootstrap/js/bootstrap.js"></script>
 	<script src="<?php echo $URLPv; ?>lib/zoomify/zoomify.js"></script>
 	<script src="<?php echo $URLPv; ?>lib/validator.min.js"></script>
+</head>
+<body>
 
 	<!-- Fixed navbar -->
             <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -53,4 +55,3 @@
             </nav>
 
     <!-- Fixed navbar -->
-
