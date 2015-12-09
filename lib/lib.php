@@ -164,6 +164,6 @@ function getActState($DBlink, $id){
 		return 3; 
 	if($now < strtotime($row['announceTime']))
 		return 4; 
-	return = 5; 
+	return 5; 
 
 }
