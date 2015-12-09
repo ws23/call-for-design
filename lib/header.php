@@ -8,9 +8,11 @@
 
 	<title>衣物設計徵稿系統</title>
 	<link rel="stylesheet" href="<?php echo $URLPv; ?>lib/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="<?php echo $URLPv; ?>lib/zoomify/zoomify.css">
 	<link rel="stylesheet" href="<?php echo $URLPv; ?>stylesheets/index.css">
 	<script src="<?php echo $URLPv; ?>lib/jquery/jquery-1.11.2.js"></script>
 	<script src="<?php echo $URLPv; ?>lib/bootstrap/js/bootstrap.js"></script>
+	<script src="<?php echo $URLPv; ?>lib/zoomify/zoomify.js"></script>
 	<script src="<?php echo $URLPv; ?>lib/validator.min.js"></script>
 
 	<!-- Fixed navbar -->
