@@ -6,9 +6,9 @@
 <div class="container">
 	<table class="table">
 		<tr>
-			<th class="col-ms-6">徵稿活動名稱</th>
-			<th class="col-ms-3">狀態</th>
-			<th class="col-ms-3"></th>
+			<th class="col-ms-8">徵稿活動名稱</th>
+			<th class="col-ms-2">狀態</th>
+			<th class="col-ms-2"></th>
 		</tr>
 <?php
 	$now = time(); 
@@ -33,9 +33,9 @@
 				$state = 5; 
 ?>
 		<tr class="<?php echo $colors[$state]; ?>">
-			<td><?php echo $row['title']; ?></td>
+			<td><a href="view.php?act=<?php echo $row['mainID']; ?>"><?php echo $row['title']; ?></td>
 			<td><?php echo $states[$state]; ?></td>
-			<td><?php echo $events[$state]; ?></td>
+			<td><a href="<?php echo $state==1? "add.php?act=".$row['mainID'] : "vote.php?act=".$row['mainID']; ?>"><?php echo $events[$state]; ?></td>
 		</tr>
 <?php
 		}
