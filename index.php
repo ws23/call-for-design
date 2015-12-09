@@ -18,7 +18,9 @@
 	$events = array("",         "投稿去", "檢視稿件", "投票去", "檢視稿件", "看結果去"); 
 	if($result->num_rows>0){
 		while($row = $result->fetch_array(MYSQLI_BOTH)){
-			$state = getActState($DBmain, $row['mainID']); 
+			$state = getActState($DBmain, $row['mainID']);
+			if($state == -1)
+				continue; 
 ?>
 		<tr class="<?php echo $colors[$state]; ?>">
 			<td><a href="view.php?act=<?php echo $row['mainID']; ?>"><?php echo $row['title']; ?></td>
