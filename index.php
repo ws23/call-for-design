@@ -11,26 +11,14 @@
 			<th class="col-ms-2"></th>
 		</tr>
 <?php
-	$now = time(); 
 
-	$result = $DBmain->query("SELECT * FROM `main` WHERE status = 1; "); 
+	$result = $DBmain->query("SELECT * FROM `main` WHERE `status` = 1; "); 
 	$states = array("即將徵稿", "徵稿中", "即將投票", "投票中", "即將公佈", "公佈結果"); 
 	$colors = array("",         "info",   "warning",  "danger", "active",   "success"); 
 	$events = array("",         "投稿去", "檢視稿件", "投票去", "檢視稿件", "看結果去"); 
 	if($result->num_rows>0){
 		while($row = $result->fetch_array(MYSQLI_BOTH)){
-			if($now < strtotime($row['startCallForDesign']))
-				$state = 0; 
-			else if($now < strtotime($row['endCallForDesign']))
-				$state = 1; 
-			else if($now < strtotime($row['startVote']))
-				$state = 2; 
-			else if($now < strtotime($row['endVote']))
-				$state = 3; 
-			else if($now < strtotime($row['announceTime']))
-				$state = 4; 
-			else
-				$state = 5; 
+			$state = getActState($DBmain, $row['mainID']); 
 ?>
 		<tr class="<?php echo $colors[$state]; ?>">
 			<td><a href="view.php?act=<?php echo $row['mainID']; ?>"><?php echo $row['title']; ?></td>

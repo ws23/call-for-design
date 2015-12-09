@@ -145,3 +145,25 @@ function CheckPOP3($server, $user, $pwd, $port = 110){
     return true;
 }
 
+/* Judge the time state */
+function getActState($DBlink, $id){
+	$now = time(); 
+
+	$result = $DBmain->query("SELECT * FROM `main` WHERE `mainID` = {$id}; ");
+	if($result->num_rows<1)
+		return -1; 
+	$row = $result->fetch_array(MYSQLI_BOTH); 
+
+	if($now < strtotime($row['startCallForDesign']))
+		return 0; 
+	if($now < strtotime($row['endCallForDesign']))
+		return 1; 
+	if($now < strtotime($row['startVote']))
+		return 2; 
+	if($now < strtotime($row['endVote']))
+		return 3; 
+	if($now < strtotime($row['announceTime']))
+		return 4; 
+	return = 5; 
+
+}
