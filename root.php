@@ -1,7 +1,7 @@
 <?php 
 	session_start(); 
 	require(dirname(__FILE__) . "/lib/header.php");
-	ini_set('display_errors', 'On');
+	ini_set('display_errors', 'Off');
 ?>
 <div class="container">
 	<h2>Result: </h2>
