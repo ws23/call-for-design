@@ -31,6 +31,11 @@
                         <ul class="nav navbar-nav navbar-right">
 							<?php 
 								if(isset($_SESSION['loginID'])){ 	
+									if(checkAdmin($DBmain, $_SESSION['loginID'])){
+							?>
+							<li><a href="<?php echo $URLPv; ?>admin.php">管理使用者</a></li>	
+							<?php
+									}
 							?>
 							<li><a href="<?php echo $URLPv; ?>regist.php">修改個人資料</a></li>
 							<li><a href="<?php echo $URLPv; ?>logout.php">登出</a></li>
